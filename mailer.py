@@ -11,7 +11,8 @@ class Mailer():
         self.csv_path = csv_path
         self.msg_path = msg_path
         self.subject = subject
-        self.name, self.username, self.password = self._parse_user()
+        self.name, self.username, self.password, self.SMTP_server = self._parse_user()
+
     def _parse_user(self):
         user_data = []
         with open(self.user_path,'r') as f_user:
@@ -49,7 +50,7 @@ class Mailer():
         
         
     def send(self,retry_count=0):
-        server = smtplib.SMTP('mail.credence-hiring.com',587) # use secure
+        server = smtplib.SMTP(self.SMTP_server,587) # use secure
         server.ehlo()
         server.starttls()
         server.ehlo()
