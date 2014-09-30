@@ -68,9 +68,9 @@ class Mailer():
         
 if __name__ == "__main__":
     if (len(sys.argv) == 5):
-        _,user_path,csv_path,msg_path,subject = sys.argv
+        ,user_path,csv_path,msg_path,subject = sys.argv
     else:
-        print "Usage: python <user.csv> <recipients.csv> <message.txt> <subject.txt>"
+        print "Usage: python mailer.py <user.csv> <recipients.csv> <message.txt> <subject.txt>"
         sys.exit()
 
     mailer = Mailer(user_path,csv_path,msg_path,subject)
